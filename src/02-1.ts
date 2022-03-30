@@ -1,4 +1,4 @@
-import { func1 } from "./2-2";
+import { func1 } from "./02-2";
 
 const a = {name: 1};
 const b = {name: 1};
