@@ -80,10 +80,36 @@ class Person4 {
         console.log(Person4.getIsAdult(this.age) ? '삐빅! 성인입니다' : "삐빅! 청소년입니다");
     }
     static getIsAdult(age) {
-        return Person4.adultAge <= age;
+        return Person4.adultAge <= age; // adultAge 정적변수이기 때문에 접근 가능
     }
 }
 Person4.adultAge = 20;
+/**
+ * static 키워드가 붙은 속성은 객체와 상관없이 고정값
+ * 그래서 사용할 때 클래스이름에 . 찍어서 접근할 수 있음
+ */
 const person4 = new Person4('killdong', 24);
 person4.sayHello();
-console.log(`성인 판단 기준 나이: ${Person4.adultAge}`);
+// 안녕하세요 저는 killdong입니다
+// 삐빅! 성인입니다
+console.log(`성인 판단 기준 나이: ${Person4.adultAge}`); // 성인 판단 기준 나이: 20
+// abstract키워드로 추상클래스 정의
+class Person5 {
+    constructor(name) {
+        this.name = name;
+    }
+    sayHello() {
+        console.log(`Hey, I'm ${this.name}`);
+    }
+}
+class Student extends Person5 {
+    sayHello() {
+        super.sayHello();
+        console.log("I'm a student");
+    }
+    // 이 함수 상속받지 않으면 에러뜸
+    sayHello2() {
+        console.log("Wassssssssssssup!!!!!!!!!");
+    }
+}
+// const person5 = new Person5('Tom');     // 추상클래스는 객체로 만들 수 없음
